@@ -2,8 +2,7 @@ import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 import { NextResponse } from "next/server";
 import { url } from "@/lib/db";
-import { User } from "@/lib/model";
-import { Account } from "@/lib/accountModels";
+import { AdminUser } from "@/lib/admin/adminUserModels";
 
 export async function POST(req, res) {
   try {
@@ -29,7 +28,7 @@ export async function POST(req, res) {
     }
 
     // Check if the email is already taken
-    const existingUser = await User.findOne({ email });
+    const existingUser = await AdminUser.findOne({ email });
     if (existingUser) {
       throw new Error("Email already taken");
     }
@@ -38,18 +37,10 @@ export async function POST(req, res) {
     const hashedPassword = await bcrypt.hash(password, 12);
 
     // Create a new user
-    const newUser = await User.create({
+    const newUser = await AdminUser.create({
       email,
       username,
       hashedPassword,
-    });
-
-    // Create a new account associated with the user ID
-    const newAccount = await Account.create({
-      _id: newUser._id,
-      username,
-      email,
-      // Add any additional fields related to the account if needed
     });
 
     // Close the MongoDB connection
@@ -61,7 +52,6 @@ export async function POST(req, res) {
         message: "User registered successfully",
         success: true,
         newUser,
-        newAccount,
       },
       { status: 201 }
     );

@@ -1,0 +1,14 @@
+import React from "react";
+import Navbar from "@/components/Navbar";
+const page = () => {
+  return (
+    <>
+      <Navbar />
+      <main className="text-2xl text-green-500 pt-20">
+        <div className="px-4 md:px-16 ">Series</div>
+      </main>
+    </>
+  );
+};
+
+export default page;
