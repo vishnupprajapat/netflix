@@ -26,7 +26,11 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/app/api/register/route.js"
+    "src/app/api/register/route.js",
+    "src/middleware.jsx",
+    "src/context/userProvider.js",
+    "src/app/login/page.jsx",
+    "src/components/Input.jsx"
   ],
   "exclude": ["node_modules"]
 }

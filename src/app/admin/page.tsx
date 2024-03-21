@@ -1,11 +1,9 @@
 import Navbar from "@/components/Navbar";
-import Banner from "@/components/Banner";
-
+import Dashboard from "./dashboard/Dashboard";
 export default function Home() {
   return (
     <>
-      <Navbar />
-      <Banner />
+      <Dashboard />
     </>
   );
 }

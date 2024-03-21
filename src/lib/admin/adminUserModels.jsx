@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-const user = new mongoose.Schema({
+const adminUser = new mongoose.Schema({
   email: {
     type: String,
     required: true,
@@ -16,16 +16,11 @@ const user = new mongoose.Schema({
     type: String,
     required: true,
   },
-  favoriteIds: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Movies", // Reference to the Movie model
-    },
-  ],
   createdAt: {
     type: Date,
     default: Date.now,
   },
 });
 
-export const User = mongoose.models.user || mongoose.model("user", user);
+export const AdminUser =
+  mongoose.models.AdminUser || mongoose.model("AdminUser", adminUser);
