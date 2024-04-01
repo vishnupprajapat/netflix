@@ -11,7 +11,7 @@ const AccountMenu = ({ visible }) => {
   const logOut = useCallback(async () => {
     try {
       await axios.post("/api/logout");
-      window.location.reload();
+      // window.location.reload();
       router.push("/login"); // Use router.push() to navigate to login page
     } catch (error) {
       console.error("Error logging out:", error);

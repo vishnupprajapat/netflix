@@ -19,9 +19,21 @@ export function middleware(request) {
   const loggedInUserNotAccessPaths =
     request.nextUrl.pathname === "/login" ||
     request.nextUrl.pathname == "/register";
+  const loggedInAdminUserNotAccessPaths =
+    request.nextUrl.pathname === "/admin/login" ||
+    request.nextUrl.pathname == "/admin/register";
 
-  if (request.nextUrl.pathname.startsWith("/admin")) {
+  if (loggedInAdminUserNotAccessPaths) {
     console.log("admin");
+    console.log(adminAuthToken);
+
+    if (adminAuthToken) {
+      return NextResponse.redirect(new URL("/admin", request.url));
+    }
+  } else {
+    if (!adminAuthToken && request.nextUrl.pathname.startsWith("/admin")) {
+      return NextResponse.redirect(new URL("/admin/login", request.url));
+    }
   }
 
   if (loggedInUserNotAccessPaths) {
@@ -60,9 +72,9 @@ export function middleware(request) {
 export const config = {
   matcher: [
     "/",
-    // "/admin",
-    // "/admin/login",
-    // "/admin/register",
+    "/admin",
+    "/admin/login",
+    "/admin/register",
     "/login",
     "/register",
     "/api/:path*",
