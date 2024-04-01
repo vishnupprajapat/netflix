@@ -24,7 +24,7 @@ const Banner = () => {
       }
     })();
   }, []);
-  console.log(rendMovie);
+  // console.log(rendMovie);
   return (
     <div className="relative h-[56.25vw]">
       {!loading ? (

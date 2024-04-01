@@ -23,43 +23,56 @@ export function middleware(request) {
     request.nextUrl.pathname === "/admin/login" ||
     request.nextUrl.pathname == "/admin/register";
 
-  if (loggedInAdminUserNotAccessPaths) {
-    console.log("admin");
-    console.log(adminAuthToken);
+  if (request.nextUrl.pathname.startsWith("/admin")) {
+    if (loggedInAdminUserNotAccessPaths) {
+      console.log("admin");
+      console.log(adminAuthToken);
 
-    if (adminAuthToken) {
-      return NextResponse.redirect(new URL("/admin", request.url));
-    }
-  } else {
-    if (!adminAuthToken && request.nextUrl.pathname.startsWith("/admin")) {
-      return NextResponse.redirect(new URL("/admin/login", request.url));
-    }
-  }
-
-  if (loggedInUserNotAccessPaths) {
-    // access not secured route
-    if (authToken) {
-      return NextResponse.redirect(new URL("/", request.url));
-    }
-  } else {
-    // accessing secured route
-
-    if (!authToken) {
-      if (request.nextUrl.pathname.startsWith("/api")) {
-        return NextResponse.json(
-          {
-            message: "Access Denied !!",
-            success: false,
-          },
-          {
-            status: 401,
-          }
-        );
+      if (adminAuthToken) {
+        return NextResponse.redirect(new URL("/admin", request.url));
       }
-
-      return NextResponse.redirect(new URL("/login", request.url));
     } else {
-      // varify...
+      if (!adminAuthToken && request.nextUrl.pathname.startsWith("/admin")) {
+        if (request.nextUrl.pathname.startsWith("/api/admin")) {
+          return NextResponse.json(
+            {
+              message: "Access Denied !! admin",
+              success: false,
+            },
+            {
+              status: 401,
+            }
+          );
+        }
+        return NextResponse.redirect(new URL("/admin/login", request.url));
+      } else {
+        // varify...
+      }
+    }
+  } else {
+    if (loggedInUserNotAccessPaths) {
+      // access not secured route
+      if (authToken) {
+        return NextResponse.redirect(new URL("/", request.url));
+      }
+    } else {
+      if (!authToken && request.nextUrl.pathname.startsWith("/")) {
+        if (request.nextUrl.pathname.startsWith("/api")) {
+          return NextResponse.json(
+            {
+              message: "Access Denied user!!",
+              success: false,
+            },
+            {
+              status: 401,
+            }
+          );
+        }
+
+        return NextResponse.redirect(new URL("/login", request.url));
+      } else {
+        // varify...
+      }
     }
   }
 
