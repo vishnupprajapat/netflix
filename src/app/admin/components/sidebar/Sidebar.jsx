@@ -4,7 +4,7 @@ import { MdMovieEdit } from "react-icons/md";
 
 const Sidebar = () => {
   return (
-    <aside className="relative overflow-hidden flex flex-col bg-clip-border top-20 rounded-xl bg-white text-gray-700 h-[100vh-20px] w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5">
+    <aside className="relative overflow-hidden flex flex-col bg-clip-border top-20 rounded-xl bg-white text-gray-700  w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5">
       <nav className="flex flex-col gap-1 min-w-[240px] p-2 font-sans text-base font-normal text-gray-700">
         <Link
           href={"/admin"}

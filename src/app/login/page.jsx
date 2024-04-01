@@ -27,7 +27,7 @@ export default function Page() {
         password,
       });
       router.push("/");
-      window.location.reload();
+      // window.location.reload();
     } catch (error) {
       // console.log("Error logging in:", error.response);
       setLoading(false);
