@@ -6,6 +6,7 @@ import {
   ChevronDownIcon,
 } from "@heroicons/react/24/outline";
 import AccountMenu from "./AccountMenu";
+import Link from "next/link";
 
 const TOP_OFFSET = 66;
 
@@ -45,13 +46,13 @@ const SidebarHeader = () => {
           showBackground ? "bg-zinc-900 bg-opacity-90" : ""
         }`}
       >
-        <a href="/" className="order-[2] md:order-first">
+        <Link href="/admin" className="order-[2] md:order-first">
           <img
             src="/images/logo.png"
             className="h-4 lg:h-7 cursor-pointer"
             alt="Logo"
           />
-        </a>
+        </Link>
         <div className="flex flex-row ml-auto gap-7 items-center order-[3]">
           <div className="text-black hover:text-gray-500 cursor-pointer transition">
             <MagnifyingGlassIcon className="w-6" />

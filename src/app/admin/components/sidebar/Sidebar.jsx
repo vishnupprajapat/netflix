@@ -13,7 +13,7 @@ const Sidebar = () => {
           <div className="grid place-items-center mr-3 ">
             <MdMovieEdit size={20} />
           </div>
-          Add Movies
+          Movies
         </Link>
       </nav>
     </aside>

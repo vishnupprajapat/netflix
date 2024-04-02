@@ -88,8 +88,10 @@ export const config = {
     "/admin",
     "/admin/login",
     "/admin/register",
+    "/admin/movies",
+    "/admin/addMovie",
     "/login",
     "/register",
-    "/api/:path*",
+    // "/api/:path*",
   ],
 };
