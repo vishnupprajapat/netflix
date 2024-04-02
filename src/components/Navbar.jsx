@@ -9,6 +9,7 @@ import UserContext from "@/context/userContext";
 import AccountMenu from "@/components/AccountMenu";
 import MobileMenu from "@/components/MobileMenu";
 import NavbarItem from "@/components/NavbarItem";
+import Link from "next/link";
 
 const TOP_OFFSET = 66;
 
@@ -55,13 +56,13 @@ const Navbar = () => {
           showBackground ? "bg-zinc-900 bg-opacity-90" : ""
         }`}
       >
-        <a href="/" className="order-[2] md:order-first">
+        <Link href="/" className="order-[2] md:order-first">
           <img
             src="/images/logo.png"
             className="h-4 lg:h-7 cursor-pointer"
             alt="Logo"
           />
-        </a>
+        </Link>
         <div className="flex-row ml-8 gap-7 hidden lg:flex ">
           <NavbarItem label="Home" active href="/" />
           <NavbarItem label="Series" href="/series" />
