@@ -2,21 +2,22 @@
 import axios from "axios";
 import React, { useCallback, useContext, useState } from "react";
 import { useRouter } from "next/navigation";
+import UserContext from "../../adminContext/userContext";
 
 const AccountMenu = ({ visible }) => {
-  // const context = useContext(UserContext);
-  // const { user } = context;
-  // const router = useRouter(); // Use useRouter hook to get the router object
+  const context = useContext(UserContext);
+  const { user } = context;
+  const router = useRouter(); // Use useRouter hook to get the router object
 
-  // const logOut = useCallback(async () => {
-  //   try {
-  //     await axios.post("/api/logout");
-  //     window.location.reload();
-  //     router.push("/login"); // Use router.push() to navigate to login page
-  //   } catch (error) {
-  //     console.error("Error logging out:", error);
-  //   }
-  // }, [router]);
+  const logOut = useCallback(async () => {
+    try {
+      await axios.post("/api/admin/logout");
+      window.location.reload();
+      router.push("/admin/login"); // Use router.push() to navigate to login page
+    } catch (error) {
+      console.error("Error logging out:", error);
+    }
+  }, [router]);
 
   if (!visible) {
     return null;
@@ -31,12 +32,14 @@ const AccountMenu = ({ visible }) => {
             src="/images/default-blue.png"
             alt=""
           />
-          <p className="text-white text-sm group-hover/item:underline">Admin</p>
+          <p className="text-white text-sm group-hover/item:underline">
+            {user?.username}
+          </p>
         </div>
       </div>
       <hr className="bg-gray-600 border-0 h-px my-4" />
       <div
-        // onClick={logOut}
+        onClick={logOut}
         className="px-3 text-center text-white text-sm hover:underline"
       >
         Logout

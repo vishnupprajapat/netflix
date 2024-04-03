@@ -1,34 +1,26 @@
 [
   {
-    "title": "Big Buck Bunny",
-    "description": "Three rodents amuse themselves by harassing creatures of the forest. However, when they mess with a bunny, he decides to teach them a lesson.",
-    "videoUrl": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-    "thumbnailUrl": "https://upload.wikimedia.org/wikipedia/commons/7/70/Big.Buck.Bunny.-.Opening.Screen.png",
-    "genre": "Comedy",
-    "duration": "10 minutes"
-  },
-  {
-    "title": "Sintel",
-    "description": "A lonely young woman, Sintel, helps and befriends a dragon, whom she calls Scales. But when he is kidnapped by an adult dragon, Sintel decides to embark on a dangerous quest to find her lost friend Scales.",
-    "videoUrl": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4",
-    "thumbnailUrl": "http://uhdtv.io/wp-content/uploads/2020/10/Sintel-3.jpg",
+    "title": "Avengers: Infinity War",
+    "description": "The Avengers and their allies must be willing to sacrifice all in an attempt to defeat the powerful Thanos before his blitz of devastation and ruin puts an end to the universe.",
+    "videoUrl": "https://imdb-video.media-imdb.com/vi528070681/1434659607842-pgv4ql-1523121356094.mp4?Expires=1712208148&Signature=dD85D2eze9qXaG1WVKiE7Oj20vjip13s4SV~sakkjfnWBEWZdfKHDwKgfE0kpqRnXyhPgSVgV6avjkqgTonnmGk3L1gDTrFm-6b2~9BUs9v2YKEvVxqfPgMOUCa61aEjFeZNSkWcyh48x2gwfUkICCSqce2W9YFgp3Wv2OfXZujrqc1FJRcFxVX51jdL3MJw6Y9WPNhVBpFUEgHkbiyCYhR7KsAoVhncN4a3VxqhtGlomXQp8SrxSiVjE~9YwWajjMtCAy2dqAB~Wr5s4x7uqNouQXBVkhYAo6Gc-DN6g1gTgD9PLm1NPqAPMFsacHx1BWD-XtbhKK8t5NVDsMa7hA__&Key-Pair-Id=APKAIFLZBVQZ24NQH3KA",
+    "thumbnailUrl": "https://m.media-amazon.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_QL75_UX380_CR0,0,380,562_.jpg",
     "genre": "Adventure",
-    "duration": "15 minutes"
+    "duration": "1 minutes"
   },
   {
-    "title": "Tears of Steel",
-    "description": "In an apocalyptic future, a group of soldiers and scientists takes refuge in Amsterdam to try to stop an army of robots that threatens the planet.",
-    "videoUrl": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4",
-    "thumbnailUrl": "https://mango.blender.org/wp-content/uploads/2013/05/01_thom_celia_bridge.jpg",
+    "title": "Avengers: Endgame",
+    "description": "After the devastating events of Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos' actions and restore balance to the universe.",
+    "videoUrl": "https://imdb-video.media-imdb.com/vi2163260441/1434659607842-pgv4ql-1556354704370.mp4?Expires=1712208585&Signature=Dqm0hqPXgIVdcRsdfgIJdJ-7Pe5pXYrauNjk~jLZBlRUCsYV1nOWFXn5ZDgJ-ZsyIGLie~KytsubgkjQPCqeRohS8~OprPRpL1fnkt5j4pqDblOhBy-SMcY3bsAq934vaZC-v8~hJ8wsugHmz9~mQrHer6Pe1OLF1YEqOpYFAfA1rjGnuH~AvmqZRVdybcnNPq7HYZIs~3-IZYnNJwmh75IPv9Tde~pL4hFrU-5vSd6WfC7xaQA1Ef9MGkI2UQzSYBRVw8Sz3LeA-wLlJ5RVG5EANfZV-pLijNT-OTPq5-bVybsNow0SaEkDsBOO6hq1fvQV9cP3LFF9ZiHI2PHuEg__&Key-Pair-Id=APKAIFLZBVQZ24NQH3KA",
+    "thumbnailUrl": "https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_QL75_UX380_CR0,0,380,562_.jpg",
     "genre": "Action",
-    "duration": "12 minutes"
+    "duration": "1 minutes"
   },
   {
-    "title": "Elephant's Dream",
-    "description": "Friends Proog and Emo journey inside the folds of a seemingly infinite Machine, exploring the dark and twisted complex of wires, gears, and cogs, until a moment of conflict negates all their assumptions.",
-    "videoUrl": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
-    "thumbnailUrl": "https://download.blender.org/ED/cover.jpg",
-    "genre": "Sci-Fi",
-    "duration": "15 minutes"
+    "title": "Spider-Man: No Way Home",
+    "description": "With Spider-Man's identity now revealed, Peter asks Doctor Strange for help. When a spell goes wrong, dangerous foes from other worlds start to appear, forcing Peter to discover what it truly means to be Spider-Man.",
+    "videoUrl": "https://imdb-video.media-imdb.com/vi3348546073/1434659607842-pgv4ql-1651186731527.mp4?Expires=1712208207&Signature=On7V0o7WyItIljL06GNcj~UsP967kPnWhBfBruuEIq40G1Swp-GCGiSsPhKyqoTnwE8g6yzn1iXvRWeLGDBfo-yKL1FSxyzQmbtWlfgsiBMZ3QaPeVGwdIZTX7nqKUZwS83bnSyn~9zCU8Q3uE4VFOtzIMrJnhQdRXhyEA10EPxBTKoWCJnlc9F4Yq9-rijPJoSFTP0eNxwDyfrB5oK0yYvdJtieFVyvS7bGgB8DjyZVyemx9bSE9BinLb~eiD-MIGlxCBh-~ZMPaPLm9-iR2JsZm8mU14MosY403~-9dXCYrj3wvJtw4cYl4ZgArxev4Z9A5M8PW3TW~gxvFo~aoQ__&Key-Pair-Id=APKAIFLZBVQZ24NQH3KA",
+    "thumbnailUrl": "https://m.media-amazon.com/images/M/MV5BZWMyYzFjYTYtNTRjYi00OGExLWE2YzgtOGRmYjAxZTU3NzBiXkEyXkFqcGdeQXVyMzQ0MzA0NTM@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "genre": "Action",
+    "duration": "1 minutes"
   }
 ]

@@ -25,6 +25,7 @@ export default function Page() {
         password,
       });
       router.push("/admin");
+      window.location.reload();
     } catch (error) {
       console.log("Error logging in:", error.response);
       setLoading(false);

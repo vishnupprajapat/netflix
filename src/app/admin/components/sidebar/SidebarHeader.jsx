@@ -7,6 +7,7 @@ import {
 } from "@heroicons/react/24/outline";
 import AccountMenu from "./AccountMenu";
 import Link from "next/link";
+// import cookie from "../../adminContext/cookie";
 
 const TOP_OFFSET = 66;
 
@@ -39,6 +40,10 @@ const SidebarHeader = () => {
   const toggleMobileMenu = useCallback(() => {
     setShowMobileMenu((current) => !current);
   }, []);
+
+  // if (!cookie) {
+  //   return <nav className="hidden"></nav>;
+  // }
   return (
     <nav className="w-full fixed z-40 border-b-2">
       <div

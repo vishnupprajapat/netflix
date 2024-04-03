@@ -28,9 +28,12 @@
     ".next/types/**/*.ts",
     "src/app/api/register/route.js",
     "src/middleware.jsx",
-    "src/context/userProvider.js",
+    "src/context/userProvider.jsx",
     "src/app/login/page.jsx",
-    "src/components/Input.jsx"
+    "src/components/Input.jsx",
+    "src/app/admin/page.jsx",
+    "src/app/admin/adminContext/cookie.jsx",
+    "src/app/admin/adminContext/userProvider.jsx"
   ],
   "exclude": ["node_modules"]
 }
