@@ -10,6 +10,7 @@ import AccountMenu from "@/components/AccountMenu";
 import MobileMenu from "@/components/MobileMenu";
 import NavbarItem from "@/components/NavbarItem";
 import Link from "next/link";
+import Image from "next/image";
 
 const TOP_OFFSET = 66;
 
@@ -57,10 +58,12 @@ const Navbar = () => {
         }`}
       >
         <Link href="/" className="order-[2] md:order-first">
-          <img
+          <Image
             src="/images/logo.png"
             className="h-4 lg:h-7 cursor-pointer"
             alt="Logo"
+            width={100}
+            height={100}
           />
         </Link>
         <div className="flex-row ml-8 gap-7 hidden lg:flex ">
@@ -95,7 +98,12 @@ const Navbar = () => {
             className="flex flex-row items-center gap-2 cursor-pointer relative"
           >
             <div className="w-6 h-6 lg:w-10 lg:h-10 rounded-md overflow-hidden">
-              <img src="/images/default-blue.png" alt="" />
+              <Image
+                src="/images/default-blue.png"
+                alt=""
+                width={100}
+                height={100}
+              />
             </div>
             <ChevronDownIcon
               className={`w-4 text-white fill-white transition ${

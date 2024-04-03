@@ -7,6 +7,7 @@ import {
 } from "@heroicons/react/24/outline";
 import AccountMenu from "./AccountMenu";
 import Link from "next/link";
+import Image from "next/image";
 // import cookie from "../../adminContext/cookie";
 
 const TOP_OFFSET = 66;
@@ -52,10 +53,12 @@ const SidebarHeader = () => {
         }`}
       >
         <Link href="/admin" className="order-[2] md:order-first">
-          <img
+          <Image
             src="/images/logo.png"
             className="h-4 lg:h-7 cursor-pointer"
             alt="Logo"
+            width={100}
+            height={100}
           />
         </Link>
         <div className="flex flex-row ml-auto gap-7 items-center order-[3]">
@@ -70,7 +73,12 @@ const SidebarHeader = () => {
             className="flex flex-row items-center gap-2 cursor-pointer relative"
           >
             <div className="w-6 h-6 lg:w-10 lg:h-10 rounded-md overflow-hidden">
-              <img src="/images/default-blue.png" alt="" />
+              <Image
+                src="/images/default-blue.png"
+                alt=""
+                width={100}
+                height={100}
+              />
             </div>
             <ChevronDownIcon
               className={`w-4 text-black fill-black transition ${
