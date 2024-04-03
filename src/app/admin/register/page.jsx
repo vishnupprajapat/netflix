@@ -6,7 +6,7 @@ import Input from "@/components/Input";
 import Link from "next/link";
 import Loader from "@/components/Loader";
 
-export default function page() {
+export default function Page() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [isValid, setIsValid] = useState(true);

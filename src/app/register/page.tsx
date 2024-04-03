@@ -7,7 +7,7 @@ import Loader from "@/components/Loader";
 import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 
-export default function page() {
+export default function Page() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [isValid, setIsValid] = useState(true);

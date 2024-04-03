@@ -29,9 +29,9 @@
     "src/app/api/register/route.js",
     "src/middleware.jsx",
     "src/context/userProvider.jsx",
-    "src/app/login/page.jsx",
+    "src/app/login/Page.jsx",
     "src/components/Input.jsx",
-    "src/app/admin/page.jsx",
+    "src/app/admin/Page.jsx",
     "src/app/admin/adminContext/cookie.jsx",
     "src/app/admin/adminContext/userProvider.jsx"
   ],

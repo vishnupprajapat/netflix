@@ -13,7 +13,7 @@ const tableheader = [
   "Action",
 ];
 
-const page = () => {
+const Page = () => {
   const [loading, setLoading] = useState(false);
   const [movie, setMovie] = useState([]);
   useEffect(() => {
@@ -146,4 +146,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
