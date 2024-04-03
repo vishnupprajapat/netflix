@@ -3,7 +3,7 @@ import axios from "axios";
 import React, { useCallback, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
-const page = () => {
+const Page = () => {
   const [tittle, setTittle] = useState("");
   const [videoUrl, setVideoUrl] = useState("");
   const [thumbnailUrl, setThumbnailUrl] = useState("");
@@ -110,4 +110,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
