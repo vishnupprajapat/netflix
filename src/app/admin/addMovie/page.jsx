@@ -1,6 +1,7 @@
 "use client";
 import axios from "axios";
 import React, { useCallback, useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 const page = () => {
   const [tittle, setTittle] = useState("");
@@ -9,14 +10,6 @@ const page = () => {
   const [genre, setGenre] = useState("");
   const [duration, setDuration] = useState("");
   const [description, setDescription] = useState("");
-  // useEffect(() => {
-  //   console.log("tittle:" + tittle);
-  //   console.log("videoUrl:" + videoUrl);
-  //   console.log("thumbnailUrl:" + thumbnailUrl);
-  //   console.log("genres:" + genre);
-  //   console.log("duration:" + duration);
-  //   console.log("description:" + description);
-  // }, [tittle, videoUrl, thumbnailUrl, genre, duration, description]);
   const addMovies = useCallback(async () => {
     try {
       await axios.post("/api/admin/movies", {
@@ -33,14 +26,28 @@ const page = () => {
       setGenre("");
       setDuration("");
       setDescription("");
+      toast.success("Movie Added successfully", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     } catch (Error) {
-      console.log(Error.response.data);
-      setTittle("");
-      setVideoUrl("");
-      setThumbnailUrl("");
-      setGenre("");
-      setDuration("");
-      setDescription("");
+      console.log(Error.response.data.message);
+      toast.error(Error.response.data.message, {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     }
   }, [tittle, videoUrl, thumbnailUrl, genre, duration, description]);
 

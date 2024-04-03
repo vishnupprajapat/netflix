@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 
 // This function can be marked `async` if using `await` inside
 export function middleware(request) {
-  console.log("middleware executed");
+  // console.log("middleware executed");
 
   const authToken = request.cookies.get("authToken")?.value;
   const adminAuthToken = request.cookies.get("adminAuthToken")?.value;
@@ -25,9 +25,6 @@ export function middleware(request) {
 
   if (request.nextUrl.pathname.startsWith("/admin")) {
     if (loggedInAdminUserNotAccessPaths) {
-      console.log("admin");
-      console.log(adminAuthToken);
-
       if (adminAuthToken) {
         return NextResponse.redirect(new URL("/admin", request.url));
       }
