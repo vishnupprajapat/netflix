@@ -33,7 +33,7 @@ export default function Page() {
     }
     // setIsValid(emailRegex.test(email));
     console.log(email, username);
-  }, [email, username, password, password]);
+  }, [email, username, password, password, router]);
   return (
     <div className="relative h-full w-full">
       <div className="bg-black w-full h-full lg:bg-opacity-50">
