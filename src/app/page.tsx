@@ -13,9 +13,3 @@ export default function Home() {
     </>
   );
 }
-export function Getcookies() {
-  const cookieStore = cookies();
-  const theme = cookieStore.get("authToken");
-  console.log(theme);
-  return theme;
-}
