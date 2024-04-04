@@ -1,6 +1,6 @@
 import UserContext from "@/context/userContext";
 import axios from "axios";
-import React, { useCallback, useContext, useState } from "react";
+import React, { useCallback, useContext, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 const AccountMenu = ({ visible }) => {
@@ -17,6 +17,9 @@ const AccountMenu = ({ visible }) => {
       console.error("Error logging out:", error);
     }
   }, [router]);
+  useEffect(() => {
+    logOut;
+  }, [logOut]);
 
   if (!visible) {
     return null;

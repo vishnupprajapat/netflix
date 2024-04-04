@@ -1,12 +1,12 @@
 "use client";
-import axios from "axios";
-import { useRouter } from "next/navigation";
-import React, { useCallback, useContext, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import Input from "@/components/Input";
 import Link from "next/link";
 import Loader from "@/components/Loader";
+import axios from "axios";
+import { useRouter } from "next/navigation";
 
-export default function Page() {
+export default function LoginPage() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -32,6 +32,9 @@ export default function Page() {
       setError("Invalid email or password");
     }
   }, [email, password, router]);
+  useEffect(() => {
+    login;
+  }, [login]);
 
   return (
     <div className="relative h-full w-full">
@@ -72,7 +75,6 @@ export default function Page() {
               >
                 Create an account
               </Link>
-              .
             </p>
           </div>
         </div>

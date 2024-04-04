@@ -1,7 +1,7 @@
 "use client";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import React, { useCallback, useContext, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import Input from "@/components/Input";
 import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
@@ -35,6 +35,11 @@ export default function Page() {
       setError("Invalid email or password");
     }
   }, [email, password, router]);
+
+  useEffect(() => {
+    login;
+    // Call the login function when the component mounts
+  }, [login]); // Include login function in the dependency array to ensure it's updated when login changes
 
   return (
     <div className="relative h-full w-full bg-[url('/images/hero.jpg')] bg-no-repeat bg-center bg-fixed bg-cover">

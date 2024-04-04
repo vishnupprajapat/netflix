@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { cookies } from "next/headers";
 import { Inter } from "next/font/google";
 import "./admin.css";
 import "react-toastify/dist/ReactToastify.css";
@@ -6,7 +7,7 @@ import SidebarHeader from "./components/sidebar/SidebarHeader";
 import Sidebar from "./components/sidebar/Sidebar";
 const inter = Inter({ subsets: ["latin"] });
 import UserProvider from "../admin/adminContext/userProvider";
-import cookie from "./adminContext/cookie";
+// import cookie from "./adminContext/cookie";
 import { ToastContainer } from "react-toastify";
 export const metadata: Metadata = {
   title: "Admin",
@@ -18,6 +19,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const cookieStore = cookies();
+  const cookie = cookieStore.get("adminAuthToken");
   return (
     <html lang="en">
       <UserProvider>
