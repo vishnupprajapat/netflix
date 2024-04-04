@@ -4,7 +4,6 @@ import jwt from "jsonwebtoken";
 import { NextResponse } from "next/server";
 import { url } from "@/lib/db";
 import { User } from "@/lib/model";
-import Cookies from "js-cookie";
 
 export async function POST(req, res) {
   try {

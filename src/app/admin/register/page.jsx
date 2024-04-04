@@ -1,7 +1,7 @@
 "use client";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import Input from "@/components/Input";
 import Link from "next/link";
 import Loader from "@/components/Loader";
@@ -14,7 +14,6 @@ export default function Page() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  // const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const register = useCallback(async () => {
     try {
       setLoading(true);
@@ -34,6 +33,9 @@ export default function Page() {
     // setIsValid(emailRegex.test(email));
     console.log(email, username);
   }, [email, username, password, password, router]);
+  useEffect(() => {
+    register;
+  }, [register]);
   return (
     <div className="relative h-full w-full">
       <div className="bg-black w-full h-full lg:bg-opacity-50">
@@ -86,7 +88,6 @@ export default function Page() {
               >
                 Login
               </Link>
-              .
             </p>
           </div>
         </div>

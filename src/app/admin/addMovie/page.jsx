@@ -1,7 +1,8 @@
 "use client";
-import axios from "axios";
+
 import React, { useCallback, useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import axios from "axios";
 
 const Page = () => {
   const [tittle, setTittle] = useState("");
@@ -50,6 +51,9 @@ const Page = () => {
       });
     }
   }, [tittle, videoUrl, thumbnailUrl, genre, duration, description]);
+  useEffect(() => {
+    addMovies;
+  }, [addMovies]);
 
   return (
     <div>
@@ -69,7 +73,7 @@ const Page = () => {
           onChange={(e) => setVideoUrl(e.target.value)}
         />
         <input
-          className="thumbnail bg-gray-100  p-2 mb-4 outline-none"
+          className="thumbnail bg-gray-100 p-2 mb-4 outline-none"
           placeholder="Thumbnail Url"
           type="text"
           value={thumbnailUrl}
@@ -77,13 +81,13 @@ const Page = () => {
         />
         <input
           className="genres bg-gray-100  p-2 mb-4 outline-none"
-          placeholder="Genres "
+          placeholder="Genres"
           type="text"
           value={genre}
           onChange={(e) => setGenre(e.target.value)}
         />
         <input
-          className=" duration bg-gray-100  p-2 mb-4 outline-none"
+          className=" duration bg-gray-100 p-2 mb-4 outline-none"
           placeholder="Duration (min)"
           type="text"
           value={duration}
@@ -95,8 +99,6 @@ const Page = () => {
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
-
-        {/* Buttons */}
         <div className="buttons mt-6 flex justify-end">
           <button
             className="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"

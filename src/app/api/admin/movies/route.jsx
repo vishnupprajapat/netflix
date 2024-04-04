@@ -24,10 +24,10 @@ export async function POST(req, res) {
       throw new Error("Thumbnail URL is required");
     }
     if (!videoUrl || !videoUrl.startsWith("https://")) {
-      throw new Error("Video URL   must start with 'https://'");
+      throw new Error("Video URL   must start with 'https://");
     }
     if (!thumbnailUrl || !thumbnailUrl.startsWith("https://")) {
-      throw new Error("Thumbnail URL   must start with 'https://'");
+      throw new Error("Thumbnail URL   must start with 'https://");
     }
     if (!genre) {
       throw new Error("Genre is required");

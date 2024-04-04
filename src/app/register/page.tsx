@@ -1,7 +1,7 @@
 "use client";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import Input from "@/components/Input";
 import Loader from "@/components/Loader";
 import { FaGithub } from "react-icons/fa";
@@ -35,6 +35,9 @@ export default function Page() {
     // setIsValid(emailRegex.test(email));
     console.log(isValid);
   }, [email, username, password, router]);
+  useEffect(() => {
+    register;
+  }, [register]);
   return (
     <div className="relative h-full w-full bg-[url('/images/hero.jpg')] bg-no-repeat bg-center bg-fixed bg-cover">
       <div className="bg-black w-full h-full lg:bg-opacity-50">
