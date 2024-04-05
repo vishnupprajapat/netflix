@@ -6,7 +6,7 @@ export async function POST(request) {
     success: true,
   });
 
-  cookies().set("adminAuthToken", "", {
+  cookies().set("authToken", "", {
     expires: new Date(0),
   });
 

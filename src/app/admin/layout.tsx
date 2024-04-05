@@ -25,12 +25,12 @@ export default async function RootLayout({
       <UserProvider>
         <body className={inter.className}>
           <div className="h-full relative ">
-            {cookieData[0].value ? <SidebarHeader /> : <></>}
+            {cookieData[0]?.value ? <SidebarHeader /> : <></>}
             <div className="flex min-h-screen flex-row">
-              {cookieData[0].value ? <Sidebar /> : <></>}
+              {cookieData[0]?.value ? <Sidebar /> : <></>}
               <div
                 className={`${
-                  cookieData[0].value
+                  cookieData[0]?.value
                     ? "w-[1345px] mt-20 p ml-auto main flex flex-grow flex-col p-6 transition-all duration-150 ease-in md:ml-0"
                     : "w-full"
                 }`}
