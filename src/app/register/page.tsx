@@ -11,7 +11,6 @@ import Image from "next/image";
 export default function Page() {
   const router = useRouter();
   const [email, setEmail] = useState("");
-  const [isValid, setIsValid] = useState(true);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -33,7 +32,6 @@ export default function Page() {
       setError(error.response.data.message);
     }
     // setIsValid(emailRegex.test(email));
-    console.log(isValid);
   }, [email, username, password, router]);
   useEffect(() => {
     register;
@@ -70,11 +68,6 @@ export default function Page() {
                 onChange={(e: any) => setEmail(e.target.value)}
                 placeholder=" "
               />
-              {isValid ? (
-                ""
-              ) : (
-                <p className="text-red-600">Invalid Email Address</p>
-              )}
               <Input
                 type="password"
                 id="password"

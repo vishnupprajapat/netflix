@@ -16,16 +16,12 @@ async function getCookieData() {
 }
 
 export async function GET(request) {
+  const authToken = await getCookieData();
   try {
     // Connect to MongoDB
     await mongoose.connect(url);
 
-    // Retrieve JWT token from request cookies
-    const cookieData = await getCookieData();
-    const authToken = cookieData;
-    // console.log(authToken[0].value);
-
-    if (!authToken) {
+    if (!authToken[0].value) {
       return NextResponse.json(
         { success: false, message: "Authentication token missing" },
         { status: 401 }
