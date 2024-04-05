@@ -19,18 +19,21 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const cookieData: any = await getCookieData();
+  // const cookieData: any = await getCookieData();
+  // const cookieDataValue = cookieData[0]?.value;
+  const cookieStore = cookies();
+  const adminAuthToken = cookieStore.get("adminAuthToken")?.value;
   return (
     <html lang="en">
       <UserProvider>
         <body className={inter.className}>
           <div className="h-full relative ">
-            {cookieData[0]?.value ? <SidebarHeader /> : <></>}
+            {adminAuthToken ? <SidebarHeader /> : <></>}
             <div className="flex min-h-screen flex-row">
-              {cookieData[0]?.value ? <Sidebar /> : <></>}
+              {adminAuthToken ? <Sidebar /> : <></>}
               <div
                 className={`${
-                  cookieData[0]?.value
+                  adminAuthToken
                     ? "w-[1345px] mt-20 p ml-auto main flex flex-grow flex-col p-6 transition-all duration-150 ease-in md:ml-0"
                     : "w-full"
                 }`}
@@ -46,11 +49,11 @@ export default async function RootLayout({
   );
 }
 
-async function getCookieData() {
-  const cookieData = cookies().getAll();
-  return new Promise((resolve) =>
-    setTimeout(() => {
-      resolve(cookieData);
-    }, 1000)
-  );
-}
+// async function getCookieData() {
+//   const cookieData = cookies().getAll();
+//   return new Promise((resolve) =>
+//     setTimeout(() => {
+//       resolve(cookieData);
+//     }, 1000)
+//   );
+// }
