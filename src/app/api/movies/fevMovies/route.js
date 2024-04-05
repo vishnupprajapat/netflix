@@ -4,6 +4,16 @@ import { url } from "@/lib/db";
 import { Movies } from "@/lib/movieModels";
 import { User } from "@/lib/model";
 import jwt from "jsonwebtoken";
+import { cookies } from "next/headers";
+
+async function getCookieData() {
+  const cookieData = cookies().getAll();
+  return new Promise((resolve) =>
+    setTimeout(() => {
+      resolve(cookieData);
+    }, 1000)
+  );
+}
 
 export async function GET(request) {
   try {
@@ -11,7 +21,9 @@ export async function GET(request) {
     await mongoose.connect(url);
 
     // Retrieve JWT token from request cookies
-    const authToken = request.cookies.get("authToken");
+    const cookieData = await getCookieData();
+    const authToken = cookieData;
+    // console.log(authToken[0].value);
 
     if (!authToken) {
       return NextResponse.json(
@@ -23,7 +35,7 @@ export async function GET(request) {
     // Verify JWT token
     let decoded;
     try {
-      decoded = jwt.verify(authToken.value, process.env.JWT_KEY);
+      decoded = jwt.verify(authToken[0].value, process.env.JWT_KEY);
     } catch (error) {
       return NextResponse.json(
         { success: false, message: "Invalid authentication token" },

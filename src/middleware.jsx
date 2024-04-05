@@ -1,11 +1,12 @@
 import { NextResponse } from "next/server";
+import { cookies } from "next/headers";
 
 // This function can be marked `async` if using `await` inside
 export function middleware(request) {
   // console.log("middleware executed");
-
-  const authToken = request.cookies.get("authToken")?.value;
-  const adminAuthToken = request.cookies.get("adminAuthToken")?.value;
+  const cookieStore = cookies();
+  const authToken = cookieStore.get("authToken")?.value;
+  const adminAuthToken = cookieStore.get("adminAuthToken")?.value;
 
   if (
     request.nextUrl.pathname === "/api/login" ||

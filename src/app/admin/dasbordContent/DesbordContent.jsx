@@ -1,15 +1,4 @@
-import Link from "next/link";
 import React from "react";
-import { IoMdAdd } from "react-icons/io";
-import { LiaEditSolid } from "react-icons/lia";
-import { MdDelete } from "react-icons/md";
-const tableheader = [
-  "Movie name",
-  "Description",
-  "genre",
-  "duration",
-  "Action",
-];
 
 const DesbordContent = () => {
   return (
