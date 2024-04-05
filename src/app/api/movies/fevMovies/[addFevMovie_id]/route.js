@@ -3,11 +3,13 @@ import { NextResponse } from "next/server";
 import { User } from "@/lib/model";
 import jwt from "jsonwebtoken";
 import { url } from "@/lib/db";
+import { cookies } from "next/headers";
 
 export async function GET(request, { params }) {
   try {
     // Retrieve authentication token from cookies
-    const authToken = request.cookies.get("authToken")?.value;
+    const cookieStore = cookies();
+    const authToken = cookieStore.get("authToken")?.value;
 
     // Verify JWT token
     const decoded = jwt.verify(authToken, process.env.JWT_KEY);

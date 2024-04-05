@@ -3,13 +3,14 @@ import { NextResponse } from "next/server";
 import jwt from "jsonwebtoken";
 import { User } from "@/lib/model";
 import { url } from "@/lib/db";
-
+import { cookies } from "next/headers";
 export async function GET(request) {
   // Connect to MongoDB
   await mongoose.connect(url);
 
   try {
-    const authToken = request.cookies.get("authToken")?.value;
+    const cookieStore = cookies();
+    const authToken = cookieStore.get("authToken")?.value;
     if (!authToken) {
       throw { message: "Authentication token not found ", status: 401 };
     }

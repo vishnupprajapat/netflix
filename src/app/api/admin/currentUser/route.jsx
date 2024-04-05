@@ -3,13 +3,14 @@ import { NextResponse } from "next/server";
 import jwt from "jsonwebtoken";
 import { url } from "@/lib/db";
 import { AdminUser } from "@/lib/admin/adminUserModels";
-
+import { cookies } from "next/headers";
 export async function GET(request) {
   // Connect to MongoDB
   await mongoose.connect(url);
 
   try {
-    const authToken = request.cookies.get("adminAuthToken")?.value;
+    const cookieStore = cookies();
+    const authToken = cookieStore.get("authToken")?.value;
     if (!authToken) {
       throw { message: "Authentication token not found in admin", status: 401 };
     }

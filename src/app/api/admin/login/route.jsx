@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 import { NextResponse } from "next/server";
 import { url } from "@/lib/db";
 import { AdminUser } from "@/lib/admin/adminUserModels";
-
+import { cookies } from "next/headers";
 export async function POST(req, res) {
   try {
     // Connect to MongoDB
@@ -51,7 +51,7 @@ export async function POST(req, res) {
       success: true,
       user: user,
     });
-    response.cookies.set("adminAuthToken", token, {
+    cookies().set("adminAuthToken", token, {
       maxAge: 86400, // 1 day in seconds
       // httpOnly: true,
       // domain: "localhost:3000",
