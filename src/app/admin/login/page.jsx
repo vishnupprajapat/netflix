@@ -67,15 +67,6 @@ export default function LoginPage() {
             >
               {loading ? <Loader /> : "Login"}
             </button>
-            <p className="text-neutral-500 mt-12 text-center">
-              First time using Netflix?
-              <Link
-                className="text-white ml-1 hover:underline cursor-pointer"
-                href="/admin/register"
-              >
-                Create an account
-              </Link>
-            </p>
           </div>
         </div>
       </div>

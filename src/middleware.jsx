@@ -11,8 +11,7 @@ export function middleware(request) {
   if (
     request.nextUrl.pathname === "/api/login" ||
     request.nextUrl.pathname === "/api/register" ||
-    request.nextUrl.pathname === "/api/admin/login" ||
-    request.nextUrl.pathname === "/api/admin/register"
+    request.nextUrl.pathname === "/api/admin/login"
   ) {
     return;
   }
@@ -21,8 +20,7 @@ export function middleware(request) {
     request.nextUrl.pathname === "/login" ||
     request.nextUrl.pathname == "/register";
   const loggedInAdminUserNotAccessPaths =
-    request.nextUrl.pathname === "/admin/login" ||
-    request.nextUrl.pathname == "/admin/register";
+    request.nextUrl.pathname === "/admin/login";
 
   if (request.nextUrl.pathname.startsWith("/admin")) {
     if (loggedInAdminUserNotAccessPaths) {
@@ -85,7 +83,7 @@ export const config = {
     "/",
     "/admin",
     "/admin/login",
-    "/admin/register",
+    "/admin/adduser",
     "/admin/movies",
     "/admin/addMovie",
     "/login",
