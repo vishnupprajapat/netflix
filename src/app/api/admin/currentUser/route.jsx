@@ -10,7 +10,7 @@ export async function GET(request) {
 
   try {
     const cookieStore = cookies();
-    const authToken = cookieStore.get("authToken")?.value;
+    const authToken = cookieStore.get("adminAuthToken")?.value;
     if (!authToken) {
       throw { message: "Authentication token not found in admin", status: 401 };
     }
