@@ -32,7 +32,7 @@ export default function Page() {
     }
     // setIsValid(emailRegex.test(email));
     console.log(email, username);
-  }, [email, username, password, password, router]);
+  }, [email, username, password, router]);
   useEffect(() => {
     register;
   }, [register]);
