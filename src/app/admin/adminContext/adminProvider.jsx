@@ -1,17 +1,17 @@
 "use client";
 import React from "react";
-import UserContext from "./userContext";
+import AdminContext from "./adminContext";
 import axios from "axios";
 
-const UserProvider = ({ children }) => {
-  const [user, setUser] = React.useState();
+const AdminProvider = ({ children }) => {
+  const [admin, setAdmin] = React.useState();
 
   React.useEffect(() => {
     const fetchUser = async () => {
       try {
         const response = await axios.get("/api/admin/currentUser");
         const userData = response.data;
-        setUser({ ...userData });
+        setAdmin({ ...userData });
       } catch (error) {
         console.log("Error fetching user:");
       }
@@ -22,10 +22,10 @@ const UserProvider = ({ children }) => {
   }, []); // Empty dependency array to run the effect only once
   // console.log(user);
   return (
-    <UserContext.Provider value={{ user, setUser }}>
+    <AdminContext.Provider value={{ admin, setAdmin }}>
       {children}
-    </UserContext.Provider>
+    </AdminContext.Provider>
   );
 };
 
-export default UserProvider;
+export default AdminProvider;

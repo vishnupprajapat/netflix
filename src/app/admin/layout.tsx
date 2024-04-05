@@ -6,7 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import SidebarHeader from "./components/sidebar/SidebarHeader";
 import Sidebar from "./components/sidebar/Sidebar";
 const inter = Inter({ subsets: ["latin"] });
-import UserProvider from "../admin/adminContext/userProvider";
+import AdminProvider from "./adminContext/adminProvider";
 import { ToastContainer } from "react-toastify";
 import { cookies } from "next/headers";
 export const metadata: Metadata = {
@@ -25,7 +25,7 @@ export default async function RootLayout({
   const adminAuthToken = cookieStore.get("adminAuthToken")?.value;
   return (
     <html lang="en">
-      <UserProvider>
+      <AdminProvider>
         <body className={inter.className}>
           <div className="h-full relative ">
             {adminAuthToken ? <SidebarHeader /> : <></>}
@@ -44,7 +44,7 @@ export default async function RootLayout({
           </div>
           <ToastContainer />
         </body>
-      </UserProvider>
+      </AdminProvider>
     </html>
   );
 }

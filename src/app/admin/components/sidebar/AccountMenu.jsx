@@ -2,11 +2,11 @@
 import axios from "axios";
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import UserContext from "../../adminContext/userContext";
+import AdminContext from "../../adminContext/adminContext";
 import Image from "next/image";
 const AccountMenu = ({ visible }) => {
-  const context = useContext(UserContext);
-  const { user } = context;
+  const context = useContext(AdminContext);
+  const { admin } = context;
   const router = useRouter(); // Use useRouter hook to get the router object
 
   const logOut = useCallback(async () => {
@@ -38,7 +38,7 @@ const AccountMenu = ({ visible }) => {
             height={100}
           />
           <p className="text-white text-sm group-hover/item:underline">
-            {user?.username}
+            {admin?.username}
           </p>
         </div>
       </div>

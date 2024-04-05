@@ -18,13 +18,12 @@ export default function Page() {
     try {
       setLoading(true);
       setError("");
-      await axios.post("/api/admin/register", {
+      await axios.post("/api/admin/addusers", {
         email,
         username,
         password,
       });
       setLoading(true);
-      router.push("/admin/login");
     } catch (error) {
       console.log(error.response.data.message);
       setLoading(false);
@@ -32,7 +31,7 @@ export default function Page() {
     }
     // setIsValid(emailRegex.test(email));
     console.log(email, username);
-  }, [email, username, password, router]);
+  }, [email, username, password]);
   useEffect(() => {
     register;
   }, [register]);
@@ -80,15 +79,6 @@ export default function Page() {
             >
               {loading ? <Loader /> : "Sign up"}
             </button>
-            <p className="text-neutral-500 mt-12 text-center">
-              Already have an account?
-              <Link
-                className="text-white ml-1 hover:underline cursor-pointer"
-                href="/admin/login"
-              >
-                Login
-              </Link>
-            </p>
           </div>
         </div>
       </div>
