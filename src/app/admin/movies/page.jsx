@@ -28,14 +28,13 @@ const Page = () => {
         setMovies(movieData);
       } catch (error) {
         console.error("Error fetching movie data:", error);
-        // Set movies to empty array on error
         setMovies([]);
       } finally {
-        setLoading(false); // Set loading to false regardless of success or failure
+        setLoading(false);
       }
     };
 
-    fetchMovies(); // No need for setTimeout
+    fetchMovies();
   }, []);
 
   if (loading) {

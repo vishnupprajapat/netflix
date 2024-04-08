@@ -1,7 +1,6 @@
 "use client";
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import Input from "@/components/Input";
-import Link from "next/link";
 import Loader from "@/components/Loader";
 import axios from "axios";
 import { useRouter } from "next/navigation";

@@ -3,9 +3,10 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import axios from "axios";
-
+import Loader from "../components/loader/Loader";
 const Page = () => {
   const [tittle, setTittle] = useState("");
+  const [loading, setLoading] = useState(false);
   const [videoUrl, setVideoUrl] = useState("");
   const [thumbnailUrl, setThumbnailUrl] = useState("");
   const [genre, setGenre] = useState("");
@@ -22,6 +23,7 @@ const Page = () => {
         description,
       });
       setTittle("");
+      setLoading(true);
       setVideoUrl("");
       setThumbnailUrl("");
       setGenre("");
@@ -38,6 +40,7 @@ const Page = () => {
         theme: "light",
       });
     } catch (Error) {
+      setLoading(false);
       console.log(Error.response.data.message);
       toast.error(Error.response.data.message, {
         position: "top-center",
@@ -104,7 +107,7 @@ const Page = () => {
             className="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
             onClick={addMovies}
           >
-            Add Movie
+            {loading ? <Loader /> : "Add Movie"}
           </button>
         </div>
       </div>

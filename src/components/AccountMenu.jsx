@@ -1,18 +1,16 @@
-import UserContext from "@/context/userContext";
 import axios from "axios";
 import React, { useCallback, useContext, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import useFetchUser from "@/hooks/useFetchUser ";
 import Image from "next/image";
 const AccountMenu = ({ visible }) => {
-  const context = useContext(UserContext);
-  const { user } = context;
-  const router = useRouter(); // Use useRouter hook to get the router object
-
+  const router = useRouter();
+  const { user, loading, error } = useFetchUser("/api/currentUser");
   const logOut = useCallback(async () => {
     try {
       await axios.post("/api/logout");
       // window.location.reload();
-      router.push("/login"); // Use router.push() to navigate to login page
+      router.push("/login");
     } catch (error) {
       console.error("Error logging out:", error);
     }
