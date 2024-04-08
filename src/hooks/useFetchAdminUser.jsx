@@ -11,7 +11,7 @@ const useFetchAdminUser = (url) => {
       try {
         const response = await axios.get(url);
         const userData = response.data;
-        setAdmin({ ...userData });
+        setAdmin(userData);
         setLoading(false);
       } catch (error) {
         setError(error);

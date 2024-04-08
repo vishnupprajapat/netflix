@@ -33,7 +33,8 @@
     "src/components/Input.jsx",
     "src/app/admin/Page.jsx",
     "src/app/admin/adminContext/cookie.jsx",
-    "src/app/admin/adminContext/adminProvider.jsx"
+    "src/app/admin/adminContext/adminProvider.jsx",
+    "src/app/admin/layout.jsx"
   ],
   "exclude": ["node_modules"]
 }

@@ -43,8 +43,5 @@ export async function GET(request) {
   } catch (error) {
     console.error("Error retrieving user information:", error.message);
     return NextResponse.error(error.message, { status: error.status || 500 });
-  } finally {
-    // Close the MongoDB connection
-    await mongoose.disconnect();
   }
 }

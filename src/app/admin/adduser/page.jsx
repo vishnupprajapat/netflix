@@ -18,7 +18,7 @@ export default function Page() {
     try {
       setLoading(true);
       setError("");
-      await axios.post("/api/admin/addusers", {
+      await axios.post("/api/admin/adduser", {
         email,
         username,
         password,

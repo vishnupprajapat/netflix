@@ -10,9 +10,6 @@ export async function GET() {
     // Retrieve movies from the database
     const movies = await Movies.find();
 
-    // Close MongoDB connection
-    await mongoose.disconnect();
-
     // Return successful response with movies
     return NextResponse.json({ movies }, { status: 200 });
   } catch (error) {
