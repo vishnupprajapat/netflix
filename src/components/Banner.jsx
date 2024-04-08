@@ -7,7 +7,7 @@ const Banner = () => {
   const [loading, setLoading] = useState(false);
   const [rendMovie, setRendMovie] = useState([]);
   useEffect(() => {
-    (async () => {
+    const fetchMovies = async () => {
       try {
         setLoading(true);
         const response = await axios.get("/api/movies");
@@ -22,7 +22,10 @@ const Banner = () => {
         setLoading(false);
         console.error("Error fetching movie data:", error);
       }
-    })();
+    };
+    setTimeout(() => {
+      fetchMovies();
+    }, 2000);
   }, []);
   // console.log(rendMovie);
   return (

@@ -1,11 +1,10 @@
 "use client";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import React, { useCallback, useContext, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import Input from "@/components/Input";
 import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
-import UserContext from "@/context/userContext";
 import Loader from "@/components/Loader";
 import Image from "next/image";
 

@@ -2,18 +2,19 @@
 import axios from "axios";
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import AdminContext from "../../adminContext/adminContext";
 import Image from "next/image";
+import useFetchAdminUser from "@/hooks/useFetchAdminUser";
+
 const AccountMenu = ({ visible }) => {
-  const context = useContext(AdminContext);
-  const { admin } = context;
-  const router = useRouter(); // Use useRouter hook to get the router object
+  const router = useRouter();
+
+  const { admin, loading, error } = useFetchAdminUser("/api/admin/currentUser");
 
   const logOut = useCallback(async () => {
     try {
       await axios.post("/api/admin/logout");
       window.location.reload();
-      router.push("/admin/login"); // Use router.push() to navigate to login page
+      router.push("/admin/login");
     } catch (error) {
       console.error("Error logging out:", error);
     }

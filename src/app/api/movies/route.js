@@ -26,24 +26,3 @@ export async function GET() {
     );
   }
 }
-
-// export async function POST() {
-//   let movie = [];
-//   try {
-//     mongoose.connect(url);
-//     movie = new Movies({
-//       title: "Elephant's Dream",
-//       description:
-//         "Friends Proog and Emo journey inside the folds of a seemingly infinite Machine, exploring the dark and twisted complex of wires, gears, and cogs, until a moment of conflict negates all their assumptions.",
-//       videoUrl:
-//         "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
-//       thumbnailUrl: "https://download.blender.org/ED/cover.jpg",
-//       genre: "Sci-Fi",
-//       duration: "15 minutes",
-//     });
-//     await movie.save();
-//   } catch (error) {
-//     console.log(error);
-//   }
-//   return NextResponse.json({ movies: movie }, { status: 201 });
-// }
