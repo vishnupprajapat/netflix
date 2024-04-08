@@ -39,7 +39,7 @@ const AccountMenu = ({ visible }) => {
             height={100}
           />
           <p className="text-white text-sm group-hover/item:underline">
-            {admin?.username}
+            {admin.username}
           </p>
         </div>
       </div>

@@ -14,6 +14,7 @@ const Page = () => {
   const [description, setDescription] = useState("");
   const addMovies = useCallback(async () => {
     try {
+      setLoading(true);
       await axios.post("/api/admin/movies", {
         tittle,
         videoUrl,
@@ -23,7 +24,6 @@ const Page = () => {
         description,
       });
       setTittle("");
-      setLoading(true);
       setVideoUrl("");
       setThumbnailUrl("");
       setGenre("");
@@ -59,7 +59,7 @@ const Page = () => {
   }, [addMovies]);
 
   return (
-    <div>
+    <div className="add-movies">
       <div className=" mx-auto w-auto flex flex-col text-gray-800  p-4 shadow-lg ">
         <input
           className="title bg-gray-100  p-2 mb-4 outline-none"

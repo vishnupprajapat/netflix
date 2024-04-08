@@ -36,7 +36,7 @@ export default function LoginPage() {
   }, [login]);
 
   return (
-    <div className="relative h-full w-full">
+    <div className="relative h-full w-full login">
       <div className="bg-black w-full h-full lg:bg-opacity-50 ">
         <div className="flex justify-center">
           <div className="bg-black bg-opacity-70 px-16 py-16 self-center mt-[120px] lg:w-2/5 lg:max-w-md rounded-md w-full">
