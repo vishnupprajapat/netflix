@@ -34,7 +34,9 @@ const Page = () => {
       }
     };
 
-    fetchMovies();
+    setTimeout(() => {
+      fetchMovies();
+    }, 2000);
   }, []);
 
   if (loading) {
