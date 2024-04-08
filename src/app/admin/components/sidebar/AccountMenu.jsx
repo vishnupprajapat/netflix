@@ -8,7 +8,7 @@ import useFetchAdminUser from "@/hooks/useFetchAdminUser";
 const AccountMenu = ({ visible }) => {
   const router = useRouter();
 
-  const { admin, loading, error } = useFetchAdminUser("/api/admin/currentUser");
+  const { admin, loading, error } = useFetchAdminUser("/api/admin/adminUser");
 
   const logOut = useCallback(async () => {
     try {
@@ -39,7 +39,7 @@ const AccountMenu = ({ visible }) => {
             height={100}
           />
           <p className="text-white text-sm group-hover/item:underline">
-            {admin.username}
+            {admin?.username}
           </p>
         </div>
       </div>

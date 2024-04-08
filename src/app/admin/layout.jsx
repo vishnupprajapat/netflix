@@ -1,5 +1,3 @@
-import type { Metadata } from "next";
-
 import { Inter } from "next/font/google";
 import "./admin.css";
 import "react-toastify/dist/ReactToastify.css";
@@ -8,21 +6,18 @@ import Sidebar from "./components/sidebar/Sidebar";
 const inter = Inter({ subsets: ["latin"] });
 import { ToastContainer } from "react-toastify";
 import { cookies } from "next/headers";
-export const metadata: Metadata = {
+export const metadata = {
   title: "Admin",
   description: "Created by vishnu Prajapat",
 };
 
-export default async function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default async function RootLayout({ children }) {
   const cookieStore = cookies();
   const adminAuthToken = cookieStore.get("adminAuthToken")?.value;
   return (
     <html lang="en">
       <body className={inter.className}>
+        <ToastContainer />
         <div className="h-full relative ">
           {adminAuthToken ? <SidebarHeader /> : null}
           <div className="flex min-h-screen flex-row">
@@ -38,7 +33,6 @@ export default async function RootLayout({
             </div>
           </div>
         </div>
-        <ToastContainer />
       </body>
     </html>
   );

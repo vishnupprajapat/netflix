@@ -7,14 +7,15 @@ import { cookies } from "next/headers";
 export async function GET(request) {
   // Connect to MongoDB
   await mongoose.connect(url);
-
+  const cookieStore = cookies();
+  const authToken = cookieStore.get("adminAuthToken")?.value;
   try {
-    const cookieStore = cookies();
-    const authToken = cookieStore.get("adminAuthToken")?.value;
     if (!authToken) {
-      throw { message: "Authentication token not found in admin", status: 401 };
+      return NextResponse.json({
+        message: "Authentication token not found in admin",
+        status: 401,
+      });
     }
-
     const decodedToken = jwt.verify(authToken, process.env.JWT_KEY);
     if (!decodedToken || !decodedToken._id) {
       throw { message: "Invalid or expired authentication token", status: 401 };
@@ -29,9 +30,7 @@ export async function GET(request) {
 
     return NextResponse.json(user);
   } catch (error) {
+    console.log(error);
     return NextResponse.error(error.message, { status: error.status || 500 });
-  } finally {
-    // Close the MongoDB connection
-    await mongoose.disconnect();
   }
 }
