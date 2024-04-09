@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 import { Movies } from "@/lib/movieModels";
 import { url } from "@/lib/db";
 
+// Add movies
 export async function POST(req, res) {
   await mongoose.connect(url);
   let movie = [];
@@ -61,6 +62,49 @@ export async function POST(req, res) {
     // Return error response
     return NextResponse.json(
       { message: error.message, success: false },
+      { status: 500 }
+    );
+  }
+}
+
+// delete movie
+
+export async function DELETE(req) {
+  try {
+    // Connect to MongoDB
+    await mongoose.connect(url);
+
+    if (req.method !== "DELETE") {
+      throw new Error("Method Not Allowed");
+    }
+    const { id } = await req.json();
+    // Find and delete the movie by ID
+    const deletedMovie = await Movies.findByIdAndDelete(id);
+
+    // Close MongoDB connection
+    await mongoose.disconnect();
+
+    if (!deletedMovie) {
+      return NextResponse.json(
+        { success: false, message: "Movie not found" },
+        { status: 404 }
+      );
+    }
+
+    return NextResponse.json(
+      { success: true, message: "Movie deleted successfully" },
+      { status: 200 }
+    );
+  } catch (error) {
+    console.error("Error deleting movie:", error);
+
+    // Ensure MongoDB connection is closed in case of error
+    if (mongoose.connection.readyState === 1) {
+      await mongoose.disconnect();
+    }
+
+    return NextResponse.json(
+      { success: false, message: "Internal server error" },
       { status: 500 }
     );
   }
