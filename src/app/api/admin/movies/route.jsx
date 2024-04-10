@@ -77,19 +77,33 @@ export async function DELETE(req) {
     if (req.method !== "DELETE") {
       throw new Error("Method Not Allowed");
     }
-    const { id } = await req.json();
+    const { id, Id } = await req.json();
     // Find and delete the movie by ID
-    const deletedMovie = await Movies.findByIdAndDelete(id);
+
+    if (id !== undefined && id !== null) {
+      // If single ID is provided, delete a single item
+      console.log(id);
+      const deletedMovie = await Movies.findByIdAndDelete(id);
+      if (!deletedMovie) {
+        return NextResponse.json(
+          { success: false, message: "Movie not found" },
+          { status: 404 }
+        );
+      }
+    } else if (Id) {
+      console.log(Id);
+      // If multiple IDs are provided, delete multiple items
+      await Movies.deleteMany({ _id: { $in: Id } });
+    } else {
+      // If neither single nor multiple IDs are provided, return bad request
+      return NextResponse.json(
+        { success: false, message: "Invalid request" },
+        { status: 500 }
+      );
+    }
 
     // Close MongoDB connection
     await mongoose.disconnect();
-
-    if (!deletedMovie) {
-      return NextResponse.json(
-        { success: false, message: "Movie not found" },
-        { status: 404 }
-      );
-    }
 
     return NextResponse.json(
       { success: true, message: "Movie deleted successfully" },
