@@ -17,6 +17,82 @@ const Page = () => {
   const [selected, setSelected] = useState([]);
   const [loading, setLoading] = useState(true); // Initialize loading as true
   const [movies, setMovies] = useState([]);
+  const [Id, setId] = useState([]);
+
+  const handleSelectAllClick = (event) => {
+    if (event.target.checked) {
+      const newSelecteds = movies?.map((n) => n.title);
+      const newSelectedsId = movies?.map((n) => n._id);
+      setSelected(newSelecteds);
+      setId([...newSelectedsId]);
+      return;
+    }
+    setId([]);
+    setSelected([]);
+  };
+
+  const handleClick = (event, name, id) => {
+    const selectedIndex = selected.indexOf(name);
+    let newSelected = [];
+    let newId = [...Id]; // Create a copy of Id array
+
+    if (selectedIndex === -1) {
+      newSelected = newSelected.concat(selected, name);
+      newId.push(id); // Add id to Id array if checkbox is selected
+    } else if (selectedIndex === 0) {
+      newSelected = newSelected.concat(selected.slice(1));
+      const indexToRemove = newId.indexOf(id);
+      if (indexToRemove !== -1) {
+        newId.splice(indexToRemove, 1); // Remove id from Id array if checkbox is unselected
+      }
+    } else if (selectedIndex === selected.length - 1) {
+      newSelected = newSelected.concat(selected.slice(0, -1));
+      const indexToRemove = newId.indexOf(id);
+      if (indexToRemove !== -1) {
+        newId.splice(indexToRemove, 1); // Remove id from Id array if checkbox is unselected
+      }
+    } else if (selectedIndex > 0) {
+      newSelected = newSelected.concat(
+        selected.slice(0, selectedIndex),
+        selected.slice(selectedIndex + 1)
+      );
+      const indexToRemove = newId.indexOf(id);
+      if (indexToRemove !== -1) {
+        newId.splice(indexToRemove, 1); // Remove id from Id array if checkbox is unselected
+      }
+    }
+    setSelected(newSelected);
+    setId(newId); // Update Id array
+  };
+
+  // delete
+  const handleRemove = async (id) => {
+    console.log(id);
+    try {
+      await axios.delete("/api/admin/movies", {
+        data: { id },
+      });
+
+      setMovies(movies.filter((movie) => movie._id !== id));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleRemoveAllselected = async () => {
+    console.log(Id);
+    try {
+      await axios.delete("/api/admin/movies", {
+        data: { Id },
+      });
+      setMovies(movies.filter((movie) => !Id.includes(movie._id)));
+      setSelected([]);
+      setId([]);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     const fetchMovies = async () => {
       try {
@@ -35,32 +111,7 @@ const Page = () => {
       fetchMovies();
     }, 2000);
   }, []);
-  const handleSelectAllClick = (event) => {
-    if (event.target.checked) {
-      const newSelecteds = movies?.map((n) => n.title);
-      setSelected(newSelecteds);
-      return;
-    }
-    setSelected([]);
-  };
 
-  const handleClick = (event, name) => {
-    const selectedIndex = selected.indexOf(name);
-    let newSelected = [];
-    if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, name);
-    } else if (selectedIndex === 0) {
-      newSelected = newSelected.concat(selected.slice(1));
-    } else if (selectedIndex === selected.length - 1) {
-      newSelected = newSelected.concat(selected.slice(0, -1));
-    } else if (selectedIndex > 0) {
-      newSelected = newSelected.concat(
-        selected.slice(0, selectedIndex),
-        selected.slice(selectedIndex + 1)
-      );
-    }
-    setSelected(newSelected);
-  };
   if (loading) {
     return <h1>Loading...</h1>;
   }
@@ -68,7 +119,10 @@ const Page = () => {
   return (
     <>
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-        <TableTopHeader numSelected={selected.length} />
+        <TableTopHeader
+          numSelected={selected.length}
+          handleRemoveAllselected={handleRemoveAllselected}
+        />
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
@@ -101,7 +155,7 @@ const Page = () => {
           </thead>
           <tbody>
             {movies.map((movie) => {
-              const { title, description, genre, duration } = movie;
+              const { title, description, genre, duration, _id } = movie;
               const selectedMovie = selected.indexOf(title) !== -1;
               return (
                 <tr
@@ -114,7 +168,7 @@ const Page = () => {
                         id={`checkbox-table-search-${title}`}
                         type="checkbox"
                         checked={selectedMovie}
-                        onChange={(event) => handleClick(event, title)}
+                        onChange={(event) => handleClick(event, title, _id)}
                         className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                       />
                       <label
@@ -136,7 +190,7 @@ const Page = () => {
                       <AiOutlineEdit size={20} />
                     </button>
                     <button className="font-medium text-red-600 dark:text-red-500 hover:underline">
-                      <MdDelete size={20} />
+                      <MdDelete onClick={() => handleRemove(_id)} size={20} />
                     </button>
                   </td>
                 </tr>

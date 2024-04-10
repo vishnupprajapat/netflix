@@ -23,6 +23,7 @@ const Page = () => {
         duration,
         description,
       });
+      setLoading(false);
       setTittle("");
       setVideoUrl("");
       setThumbnailUrl("");

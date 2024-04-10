@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation";
 import { IoMdAdd } from "react-icons/io";
 import { MdDelete } from "react-icons/md";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
-const TableTopHeader = ({ numSelected }) => {
+const TableTopHeader = ({ numSelected, handleRemoveAllselected }) => {
   const router = useRouter();
   return (
     <div
@@ -15,7 +15,7 @@ const TableTopHeader = ({ numSelected }) => {
         <>
           <div className="p-2 text-blue-500">{numSelected} selected</div>
           <button className="">
-            <MdDelete size={20} />
+            <MdDelete size={20} onClick={() => handleRemoveAllselected()} />
           </button>
         </>
       ) : (
