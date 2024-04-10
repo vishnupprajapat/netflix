@@ -107,7 +107,7 @@ const Page = () => {
       }
     };
     fetchMovies();
-  }, [movies]);
+  }, []);
 
   if (loading) {
     return <h1>Loading...</h1>;
