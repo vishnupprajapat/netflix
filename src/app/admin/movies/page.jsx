@@ -106,11 +106,8 @@ const Page = () => {
         setLoading(false);
       }
     };
-
-    setTimeout(() => {
-      fetchMovies();
-    }, 2000);
-  }, []);
+    fetchMovies();
+  }, [movies]);
 
   if (loading) {
     return <h1>Loading...</h1>;
