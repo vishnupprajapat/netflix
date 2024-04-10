@@ -94,7 +94,7 @@ const Page = () => {
   };
 
   useEffect(() => {
-    const fetchMovies = async () => {
+    (async () => {
       try {
         const response = await axios.get("/api/movies");
         const movieData = response.data.movies;
@@ -105,8 +105,7 @@ const Page = () => {
       } finally {
         setLoading(false);
       }
-    };
-    fetchMovies();
+    })();
   }, []);
 
   if (loading) {
