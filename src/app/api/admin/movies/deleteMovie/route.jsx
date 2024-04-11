@@ -38,9 +38,6 @@ export async function DELETE(req) {
       );
     }
 
-    // Close MongoDB connection
-    await mongoose.disconnect();
-
     return NextResponse.json(
       { success: true, message: "Movie deleted successfully" },
       { status: 200 }

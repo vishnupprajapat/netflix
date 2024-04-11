@@ -4,9 +4,15 @@ import { Movies } from "@/lib/movieModels";
 import { url } from "@/lib/db";
 
 export async function GET() {
-  await mongoose.connect(url);
   try {
     // Connect to MongoDB
+    await mongoose.connect(url);
+
+    // Check if the connection is successful
+    if (mongoose.connection.readyState !== 1) {
+      throw new Error("Failed to connect to MongoDB");
+    }
+
     // Retrieve movies from the database
     const movies = await Movies.find();
 
