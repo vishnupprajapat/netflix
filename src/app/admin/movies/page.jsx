@@ -69,7 +69,7 @@ const Page = () => {
   const handleRemove = async (id) => {
     console.log(id);
     try {
-      await axios.delete("/api/admin/movies", {
+      await axios.delete("/api/admin/movies/deleteMovie", {
         data: { id },
       });
 
@@ -82,7 +82,7 @@ const Page = () => {
   const handleRemoveAllselected = async () => {
     console.log(Id);
     try {
-      await axios.delete("/api/admin/movies", {
+      await axios.delete("/api/admin/movies/deleteMovie", {
         data: { Id },
       });
       setMovies(movies.filter((movie) => !Id.includes(movie._id)));
