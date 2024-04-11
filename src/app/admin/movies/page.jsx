@@ -4,7 +4,7 @@ import axios from "axios";
 import { MdDelete } from "react-icons/md";
 import { AiOutlineEdit } from "react-icons/ai";
 import TableTopHeader from "../components/TableTopHeader";
-import useFetchMovies from "@/hooks/useFetchMovies";
+// import useFetchMovies from "@/hooks/useFetchMovies";
 
 const tableheader = [
   "Movie name",
@@ -17,8 +17,11 @@ const tableheader = [
 const Page = () => {
   const [selected, setSelected] = useState([]);
   const [Id, setId] = useState([]);
-  const { movies, loading, setMovies } = useFetchMovies("/api/movies");
-  console.log();
+  const [loading, setLoading] = useState(false);
+  const [movies, setMovies] = useState([]);
+
+  // const { movies, loading, setMovies } = useFetchMovies("/api/movies");
+  // console.log();
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
@@ -92,18 +95,18 @@ const Page = () => {
     }
   };
 
-  // useEffect(() => {
-  //   (async () => {
-  //     try {
-  //       const response = await axios.get("/api/movies");
-  //       const movieData = response.data.movies;
-  //       setMovies(movieData);
-  //     } catch (error) {
-  //       console.error("Error fetching movie data:", error);
-  //       setMovies([]);
-  //     }
-  //   })();
-  // }, []);
+  useEffect(() => {
+    (async () => {
+      try {
+        const response = await axios.get("/api/movies", { cache: "no-store" });
+        const movieData = response.data.movies;
+        setMovies(movieData);
+      } catch (error) {
+        console.error("Error fetching movie data:", error);
+        setMovies([]);
+      }
+    })();
+  }, []);
 
   if (loading) {
     return <h1>Loading...</h1>;
@@ -126,9 +129,11 @@ const Page = () => {
                     type="checkbox"
                     indeterminate={
                       selected.length > 0 && selected.length < movies.length
+                        ? "true"
+                        : undefined
                     }
                     checked={
-                      movies?.length > 0 && selected.length === movies.length
+                      movies?.length > 0 && selected.length === movies?.length
                     }
                     onChange={handleSelectAllClick}
                     className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
