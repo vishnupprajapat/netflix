@@ -1,11 +1,10 @@
 "use client";
-import React, { useEffect, useState } from "react";
+
+import React, { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import { MdDelete } from "react-icons/md";
 import { AiOutlineEdit } from "react-icons/ai";
 import TableTopHeader from "../components/TableTopHeader";
-// import useFetchMovies from "@/hooks/useFetchMovies";
-
 const tableheader = [
   "Movie name",
   "Description",
@@ -19,9 +18,6 @@ const Page = () => {
   const [Id, setId] = useState([]);
   const [loading, setLoading] = useState(false);
   const [movies, setMovies] = useState([]);
-
-  // const { movies, loading, setMovies } = useFetchMovies("/api/movies");
-  // console.log();
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
@@ -94,7 +90,6 @@ const Page = () => {
       console.log(error);
     }
   };
-
   useEffect(() => {
     (async () => {
       try {
@@ -107,11 +102,6 @@ const Page = () => {
       }
     })();
   }, []);
-
-  if (loading) {
-    return <h1>Loading...</h1>;
-  }
-
   return (
     <>
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
