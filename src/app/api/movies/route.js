@@ -2,8 +2,10 @@ import mongoose from "mongoose";
 import { NextResponse } from "next/server";
 import { Movies } from "@/lib/movieModels";
 import { url } from "@/lib/db";
+import { headers } from "next/headers";
 
-export async function GET() {
+export async function GET(res, req) {
+  const headersList = headers();
   try {
     // Connect to MongoDB
     await mongoose.connect(url);
