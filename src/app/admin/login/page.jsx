@@ -1,5 +1,5 @@
 "use client";
-import React, { useCallback, useContext, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import Input from "@/components/Input";
 import Loader from "@/components/Loader";
 import axios from "axios";

@@ -10,6 +10,11 @@ const movieSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  status: {
+    type: String,
+    default: "active",
+  },
+  year: String,
   videoUrl: String,
   thumbnailUrl: String,
   genre: String,

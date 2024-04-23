@@ -41,6 +41,7 @@ export async function POST(req, res) {
     const newUser = await User.create({
       email,
       username,
+      userstatus: "enable",
       hashedPassword,
     });
 
@@ -48,6 +49,7 @@ export async function POST(req, res) {
     const newAccount = await Account.create({
       _id: newUser._id,
       username,
+      userstatus: "enable",
       email,
       // Add any additional fields related to the account if needed
     });

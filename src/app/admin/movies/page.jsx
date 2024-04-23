@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { MdDelete } from "react-icons/md";
 import { AiOutlineEdit } from "react-icons/ai";
@@ -9,6 +9,7 @@ const tableheader = [
   "Movie name",
   "Description",
   "Genre",
+  "Status",
   "Duration",
   "Action",
 ];
@@ -143,7 +144,8 @@ const Page = () => {
           </thead>
           <tbody>
             {movies?.map((movie) => {
-              const { title, description, genre, duration, _id } = movie;
+              const { title, description, status, genre, duration, _id } =
+                movie;
               const selectedMovie = selected.indexOf(title) !== -1;
               return (
                 <tr
@@ -172,6 +174,19 @@ const Page = () => {
                   </td>
                   <td className="px-6 py-4">{description}</td>
                   <td className="px-6 py-4">{genre}</td>
+                  {status === "active" ? (
+                    <td className="px-6 py-4 ">
+                      <span class="inline-flex items-center rounded-full bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
+                        {status}
+                      </span>
+                    </td>
+                  ) : (
+                    <td className="px-6 py-4 ">
+                      <span class="inline-flex items-center rounded-full bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10">
+                        {status}
+                      </span>
+                    </td>
+                  )}
                   <td className="px-6 py-4">{duration}</td>
                   <td className="px-6 py-4 flex ">
                     <button className="font-medium mr-7 text-blue-600 dark:text-blue-500 hover:underline">
